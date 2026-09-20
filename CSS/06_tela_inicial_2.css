@@ -1,0 +1,107 @@
+:root {
+  --brand-yellow: #FFD600;
+  --bg-dark: #090C10;
+  --card-dark: #0D1117;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: #FFFFFF;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.bg-brand-yellow { 
+  background-color: var(--brand-yellow) !important; 
+}
+
+.text-brand-yellow { 
+  color: var(--brand-yellow) !important; 
+}
+
+.border-brand-yellow { 
+  border-color: var(--brand-yellow) !important; 
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Estilo do Marcador do Mascote no Mapa */
+.mascote-pin-container {
+  width: 48px;
+  height: 48px;
+  background: #FFFFFF;
+  border: 3px solid #FFD600;
+  border-radius: 50%;
+  padding: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: pulsoMascote 2s infinite ease-in-out;
+}
+
+.mascote-pin-container svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Animação suave para destacar a localização do usuário */
+@keyframes pulsoMascote {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  }
+  50% {
+    transform: scale(1.08);
+    box-shadow: 0 8px 20px rgba(255, 214, 0, 0.5);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  }
+}
+
+/* 06_tela_inicial_2.css */
+
+/* Importação da fonte Inter para um aspeto mais moderno e limpo */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+html, body {
+  font-family: 'Inter', sans-serif;
+  scroll-behavior: smooth;
+  /* Previne que o conteúdo salte ao abrir menus no telemóvel */
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* --- Personalização da Barra de Rolagem (Scrollbar) --- */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+/* Fundo da barra de rolagem a combinar com o fundo do painel */
+::-webkit-scrollbar-track {
+  background: #090C10; 
+}
+
+/* O "polegar" da barra de rolagem */
+::-webkit-scrollbar-thumb {
+  background: #1F2937; /* Cinzento escuro */
+  border-radius: 4px;
+}
+
+/* Efeito hover na barra de rolagem com a cor amarela principal */
+::-webkit-scrollbar-thumb:hover {
+  background: #FFD600; 
+}
+
+/* Classe utilitária para ocultar a scrollbar em elementos específicos, se precisares */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

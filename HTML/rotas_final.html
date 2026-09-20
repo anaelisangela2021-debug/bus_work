@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BUS WORK - Rotas e Horários</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen flex flex-col bg-[#090C10] text-white relative">
+
+  <!-- OVERLAY MOBILE -->
+  <div id="sidebarOverlay" class="fixed inset-0 bg-black/70 z-40 hidden lg:hidden transition-opacity"></div>
+
+  <!-- CABEÇALHO SUPERIOR -->
+  <header class="bg-[#FFD600] text-black px-4 lg:px-6 py-2.5 flex items-center justify-between sticky top-0 z-30 shadow-md">
+    <div class="flex items-center space-x-3 lg:space-x-6">
+      <a href="06_tela_inicial_2.html" class="flex items-center focus:outline-none">
+        <svg class="h-10 w-auto" viewBox="0 0 310 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g id="bus-icon">
+            <rect x="2" y="36" width="7" height="18" rx="3" fill="#121212"/>
+            <rect x="83" y="36" width="7" height="18" rx="3" fill="#121212"/>
+            <rect x="8" y="10" width="76" height="76" rx="16" fill="#121212"/>
+            <rect x="18" y="84" width="14" height="7" rx="3" fill="#121212"/>
+            <rect x="60" y="84" width="14" height="7" rx="3" fill="#121212"/>
+            <rect x="32" y="18" width="28" height="5" rx="2" fill="#FFD600"/>
+            <path d="M 18 30 H 74 V 48 C 74 53 70 56 64 56 H 28 C 22 56 18 53 18 48 Z" fill="#FFD600"/>
+            <circle cx="26" cy="68" r="6" fill="#FFD600"/>
+            <circle cx="66" cy="68" r="6" fill="#FFD600"/>
+            <rect x="38" y="67" width="16" height="3.5" rx="1.5" fill="#FFD600"/>
+          </g>
+          <g id="bus-text" fill="#121212">
+            <text x="100" y="44" font-family="'Arial Black', 'Impact', sans-serif" font-weight="900" font-size="42" letter-spacing="-1">BUS</text>
+            <text x="100" y="84" font-family="'Arial Black', 'Impact', sans-serif" font-weight="900" font-size="42" letter-spacing="-1">WORK</text>
+            <path d="M 112 80 L 122 61 L 129 63 L 118 82 Z" fill="#FFD600"/>
+          </g>
+        </svg>
+      </a>
+      <div class="flex items-center space-x-3 border-l border-black/20 pl-4">
+        <div>
+          <h2 class="font-bold text-sm leading-tight">Rotas e Horários</h2>
+        </div>
+      </div>
+    </div>
+    <div class="flex items-center space-x-3 sm:space-x-4">
+      <button id="mobile-menu-btn" class="lg:hidden p-2 hover:bg-black/10 rounded-lg focus:outline-none">
+        <svg class="w-7 h-7 text-black" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="flex-1 flex overflow-hidden relative">
+    
+    <!-- MENU LATERAL -->
+    <aside id="sidebar" class="fixed lg:static inset-y-0 left-0 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out z-50 w-64 bg-[#090C10] border-r border-gray-800 flex flex-col justify-between p-4 overflow-y-auto">
+      <div class="space-y-4">
+        <div class="flex items-center justify-between lg:hidden pb-2 border-b border-gray-800">
+          <span class="font-bold text-[#FFD600] text-sm">Menu Navegação</span>
+          <button id="close-sidebar-btn" class="p-1.5 rounded-lg text-gray-400 hover:text-white hover:bg-gray-800">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+        <nav class="space-y-1">
+          <a href="06_tela_inicial_2.html" class="flex items-center space-x-3 text-gray-400 hover:text-white hover:bg-gray-800/50 px-4 py-2.5 rounded-xl transition">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span>Início</span>
+          </a>
+          <a href="rotas_final.html" class="flex items-center space-x-3 bg-[#FFD600] text-black font-bold px-4 py-3 rounded-xl transition">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+            <span>Rotas</span>
+          </a>
+        </nav>
+      </div>
+    </aside>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="flex-1 overflow-y-auto p-4 lg:p-6 pb-24 lg:pb-6">
+      <div class="max-w-4xl mx-auto space-y-6">
+        
+        <!-- SELETOR DE LINHA -->
+        <div class="bg-[#0F172A] border border-gray-800 p-5 rounded-2xl shadow-xl">
+          <label for="linhaSelect" class="block text-sm font-bold text-[#FFD600] mb-2">Selecione a Linha:</label>
+          <div class="relative">
+            <select id="linhaSelect" class="w-full bg-[#1E293B] border border-gray-700 text-white rounded-xl px-4 py-3 appearance-none focus:outline-none focus:border-[#FFD600] font-semibold text-lg transition">
+              <!-- Opções injetadas via JS -->
+            </select>
+            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-[#FFD600]">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- TABELAS DE HORÁRIOS -->
+        <div id="horariosContainer" class="space-y-6">
+          <!-- Conteúdo gerado via JS -->
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- BARRA INFERIOR MOBILE -->
+  <nav class="lg:hidden fixed bottom-0 left-0 right-0 bg-[#090C10] border-t border-gray-800 px-3 py-2 flex items-center justify-around z-30">
+    <a href="06_tela_inicial_2.html" class="flex flex-col items-center text-gray-400 hover:text-white transition">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <span class="text-[10px] mt-1">Início</span>
+    </a>
+    <a href="rotas_final.html" class="flex flex-col items-center text-[#FFD600]">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+      <span class="text-[10px] mt-1 font-bold">Rotas</span>
+    </a>
+  </nav>
+
+  <!-- JAVASCRIPT INTEGRADO -->
+  <script>
+    // 1. BASE DE DADOS COMPLETA DAS LINHAS
+    const HORARIOS_BUSWORK = {
+      "parque_verde": {
+        nome: "Parque Verde",
+        diasUteis: {
+          terminalUrbano: ["06:00", "07:10", "08:10", "09:10", "11:40", "12:40", "13:40", "14:40", "16:10", "17:10", "18:10", "19:10", "20:10", "21:25", "22:40", "23:45"],
+          bairro: ["05:40", "06:30", "07:40", "08:40", "11:10", "12:10", "13:10", "14:10", "15:40", "16:40", "17:40", "18:40", "19:40", "20:55", "22:10", "23:15"]
+        },
+        sabados: {
+          terminalUrbano: ["06:10", "07:10", "08:10", "09:10", "11:40", "12:40", "13:40", "14:40", "17:30", "18:30", "20:30", "22:25"],
+          bairro: ["05:50", "06:40", "07:40", "08:40", "11:10", "12:10", "13:10", "14:10", "17:00", "18:00", "20:00", "22:00"]
+        },
+        domingosEFeriados: {
+          terminalUrbano: ["06:20", "09:30", "11:30", "13:00", "16:40", "19:30", "21:30", "23:35"],
+          bairro: ["06:00", "09:00", "11:00", "12:30", "16:10", "19:00", "21:00", "23:10"]
+        }
+      },
+      "milton_de_paula": {
+        nome: "Conjunto Milton de Paula",
+        diasUteis: {
+          terminalUrbano: ["06:10", "07:10", "08:10", "09:10", "11:40", "12:40", "13:40", "14:40", "16:10", "17:10", "18:10", "19:10", "20:10", "21:10", "22:30", "23:40"],
+          bairro: ["05:50", "06:40", "07:40", "08:40", "11:10", "12:10", "13:10", "14:10", "15:45", "16:40", "17:40", "18:40", "19:40", "20:40", "22:00", "23:15"]
+        },
+        sabados: {
+          terminalUrbano: ["06:10", "07:10", "08:10", "09:10", "11:40", "12:40", "13:40", "14:40", "17:10", "19:30", "22:10", "23:35"],
+          bairro: ["05:50", "06:40", "07:40", "08:40", "11:10", "12:10", "13:10", "14:10", "16:40", "19:00", "21:40", "23:10"]
+        },
+        domingosEFeriados: {
+          terminalUrbano: ["06:30", "07:50", "09:30", "11:00", "12:30", "14:00", "15:30", "17:30", "18:40", "20:00", "21:30"],
+          bairro: ["06:00", "07:25", "09:00", "10:30", "12:00", "13:30", "15:00", "17:00", "18:10", "19:30", "21:00"]
+        }
+      },
+      "avelino_piacentini": {
+        nome: "Conjunto Avelino Piacentini",
+        diasUteis: {
+          terminalUrbano: ["06:05", "07:05", "07:10", "08:05", "09:05", "10:00", "11:35", "12:35", "13:35", "14:35", "16:05", "17:05", "18:05", "19:05", "20:05", "21:15", "22:25", "23:40"],
+          bairro: ["05:45", "06:35", "06:50", "07:35", "08:35", "09:30", "11:05", "12:05", "13:05", "14:05", "15:35", "16:35", "17:35", "18:35", "19:35", "20:45", "21:55", "23:15"]
+        },
+        sabados: {
+          terminalUrbano: ["06:05", "07:05", "08:05", "09:05", "11:35", "12:35", "13:35", "14:35", "16:10", "18:10", "20:30", "23:00"],
+          bairro: ["05:45", "06:35", "07:35", "08:35", "11:05", "12:05", "13:05", "14:05", "15:40", "17:40", "20:00", "22:30"]
+        },
+        domingosEFeriados: {
+          terminalUrbano: ["06:20", "07:10", "08:30", "10:30", "13:00", "14:30", "16:30", "19:05", "20:30"],
+          bairro: ["05:50", "06:40", "08:00", "10:00", "12:30", "14:00", "16:05", "18:35", "20:00"]
+        }
+      },
+      "vila_guaruja": {
+        nome: "Vila Guarujá",
+        diasUteis: {
+          terminalUrbano: ["05:35", "06:30", "07:30", "08:30", "11:30", "12:30", "13:45", "15:50", "16:50", "17:40", "18:30", "19:30", "23:20"],
+          bairro: ["06:00", "07:00", "08:00", "09:00", "12:00", "13:00", "14:15", "16:20", "17:10", "18:10", "19:00", "20:00", "23:40"]
+        },
+        sabados: {
+          terminalUrbano: ["06:15", "07:15", "11:05", "12:10", "13:10", "14:10", "16:35", "19:00", "21:10"],
+          bairro: ["06:40", "07:45", "11:45", "12:40", "13:40", "14:40", "17:05", "19:30", "21:40"]
+        },
+        domingosEFeriados: {
+          terminalUrbano: ["08:00", "15:30"],
+          bairro: ["08:30", "16:00"]
+        }
+      },
+      "arnaldo_bronzel": {
+        nome: "Jardim Arnaldo Bronzel",
+        diasUteis: {
+          terminalUrbano: ["06:30", "08:30", "11:40", "12:40", "13:40", "14:40", "17:10", "18:20", "19:30"],
+          bairro: ["06:00", "08:00", "11:10", "12:10", "13:10", "14:10", "16:40", "17:50", "19:00"]
+        },
+        sabados: {
+          terminalUrbano: ["06:55", "11:40", "17:30"],
+          bairro: ["06:30", "11:10", "17:00"]
+        },
+        domingosEFeriados: {
+          terminalUrbano: [],
+          bairro: []
+        }
+      },
+      "fortunato_perdoncini": {
+        nome: "Conjunto Fortunato Perdoncini",
+        diasUteis: {
+          terminalUrbano: ["06:00", "07:00", "08:00", "09:00", "10:00", "11:30", "12:30", "13:30", "14:30", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:15", "23:35"],
+          bairro: ["05:40", "06:30", "07:30", "08:30", "09:30", "11:00", "12:00", "13:00", "14:00", "15:40", "16:30", "17:30", "18:30", "19:30", "20:30", "21:45", "23:15"]
+        },
+        sabados: {
+          terminalUrbano: ["06:00", "07:00", "08:00", "09:00", "11:30", "12:30", "13:30", "14:30", "16:30", "18:30", "20:30", "20:45"],
+          bairro: ["05:40", "06:30", "07:30", "08:30", "11:00", "12:00", "13:00", "14:00", "16:00", "18:00", "20:15", "22:10"]
+        },
+        domingosEFeriados: {
+          terminalUrbano: ["06:20", "08:35", "10:10", "12:40", "15:45", "18:15", "20:20", "22:40"],
+          bairro: ["06:00", "08:15", "09:50", "12:20", "15:25", "17:55", "20:00"]
+        }
+      },
+      "vila_rural": {
+        nome: "Vila Rural / Jd. Ipanema",
+        diasUteis: {
+          terminalUrbano: ["05:45", "06:10", "06:40", "07:10", "07:40", "08:10", "08:40", "09:10", "11:10", "11:40", "12:10", "12:40", "13:10", "13:40", "14:10", "14:40", "15:45", "16:10", "16:40", "17:10", "17:45", "18:10", "18:40", "19:10"],
+          bairro: []
+        },
+        sabados: {
+          terminalUrbano: ["06:40", "07:10", "07:40", "08:10", "08:40", "09:10", "11:10", "11:40", "12:10", "12:40", "13:10", "13:40", "16:00", "16:25"],
+          bairro: []
+        },
+        domingosEFeriados: {
+          terminalUrbano: ["07:00", "07:30", "09:00", "09:30", "11:00", "11:30", "13:25", "13:55", "14:30", "15:00", "17:00", "17:30", "19:00", "19:25", "19:10", "19:35"],
+          bairro: []
+        }
+      },
+      "jardim_aeroporto": {
+        nome: "Jardim Aeroporto",
+        diasUteis: {
+          terminalUrbano: ["06:10", "07:10", "08:10", "09:10", "11:40", "12:40", "13:40", "14:40", "16:10", "17:10", "18:10", "19:10", "20:05", "21:15", "22:25", "23:40"],
+          bairro: ["05:50", "06:40", "07:40", "08:40", "11:10", "12:10", "13:10", "14:10", "15:50", "16:40", "17:40", "18:40", "19:35", "20:45", "21:55", "23:15"]
+        },
+        sabados: {
+          terminalUrbano: ["06:10", "07:10", "08:10", "09:10", "11:40", "12:40", "13:40", "14:35", "16:10", "18:10", "20:30", "23:00"],
+          bairro: ["05:50", "06:40", "07:40", "08:40", "11:10", "12:10", "13:10", "14:05", "15:40", "17:40", "20:00", "22:30"]
+        },
+        domingosEFeriados: {
+          terminalUrbano: ["06:20", "07:10", "08:30", "10:30", "13:00", "14:30", "16:30", "19:05", "20:30"],
+          bairro: ["05:50", "06:40", "08:00", "10:00", "12:30", "14:00", "16:05", "18:35", "20:00"]
+        }
+      },
+      "jardim_bandeirantes": {
+        nome: "Jardim Bandeirantes",
+        diasUteis: {
+          terminalUrbano: ["06:15", "07:00", "08:00", "09:00", "11:30", "12:30", "13:30", "14:30", "16:15", "17:00", "18:00", "19:00", "20:00", "21:00", "22:15", "23:35"],
+          bairro: ["06:00", "06:45", "07:45", "08:45", "11:15", "12:15", "13:15", "14:15", "16:00", "16:45", "17:45", "18:45", "19:30", "20:30", "21:45", "23:15"]
+        },
+        sabados: {
+          terminalUrbano: ["06:15", "07:30", "08:15", "09:00", "10:55", "12:30", "14:30", "16:30", "18:30", "20:45", "22:40"],
+          bairro: ["06:00", "07:15", "08:00", "08:45", "10:40", "12:15", "14:00", "16:00", "18:00", "20:15", "22:10"]
+        },
+        domingosEFeriados: {
+          terminalUrbano: ["06:20", "08:35", "10:10", "12:40", "15:45", "18:15", "20:20"],
+          bairro: ["06:00", "08:15", "09:50", "12:20", "15:25", "17:55", "20:00"]
+        }
+      },
+      "jd_gutierrez": {
+        nome: "Jd. Gutierrez",
+        diasUteis: {
+          terminalUrbano: ["06:10", "07:10", "08:10", "09:10", "11:40", "12:55", "13:55", "16:10", "17:10", "19:30", "23:40"],
+          bairro: ["05:50", "06:40", "07:40", "08:40", "11:10", "12:25", "13:25", "15:50", "16:40", "19:00", "23:20"]
+        },
+        sabados: {
+          terminalUrbano: ["06:10", "07:10", "08:10", "09:10", "11:40", "12:40", "13:40", "14:40", "16:30", "18:35", "20:30", "22:25"],
+          bairro: []
+        },
+        domingosEFeriados: {
+          terminalUrbano: [],
+          bairro: []
+        }
+      },
+      "jardim_isabela": {
+        nome: "Jardim Isabela",
+        diasUteis: {
+          terminalUrbano: ["06:45", "07:35", "08:25", "09:15", "10:05", "12:05", "12:55", "13:55", "14:45", "15:35", "17:35", "18:45", "19:35", "20:25", "21:15", "23:05"],
+          bairro: ["06:30", "07:10", "08:00", "08:50", "09:40", "11:50", "12:30", "13:30", "14:20", "15:10", "17:10", "18:20", "19:10", "20:00", "20:50", "22:40"]
+        },
+        sabados: {
+          terminalUrbano: ["06:15", "08:50", "13:20", "14:20", "17:00", "17:50"],
+          bairro: ["06:00", "08:20", "12:50", "13:50", "16:35", "17:30"]
+        },
+        domingosEFeriados: {
+          terminalUrbano: ["08:00"],
+          bairro: ["07:40"]
+        }
+      },
+      "campus_integrado": {
+        nome: "Campus Integrado",
+        diasUteis: {
+          terminalUrbano: ["06:00", "07:00", "08:00", "09:00", "09:45", "11:30", "12:30", "13:30", "14:30", "16:00", "17:00", "18:00", "19:00", "20:10", "21:10", "22:30", "23:00", "23:40"],
+          bairro: ["05:40", "06:30", "07:30", "08:30", "09:15", "11:00", "12:00", "13:00", "14:00", "15:30", "16:30", "17:30", "18:30", "19:40", "20:40", "22:00", "22:40", "23:15"]
+        },
+        sabados: {
+          terminalUrbano: ["06:00", "07:00", "08:00", "09:00", "11:30", "12:30", "13:30", "14:40", "17:10", "19:30", "22:10", "23:35"],
+          bairro: ["05:40", "06:30", "07:30", "08:30", "11:00", "12:00", "13:00", "14:10", "16:40", "19:00", "21:40", "23:10"]
+        },
+        domingosEFeriados: {
+          terminalUrbano: ["06:30", "07:50", "09:30", "11:00", "12:30", "14:00", "15:30", "17:30", "18:40", "20:00", "21:30"],
+          bairro: ["06:00", "07:25", "09:00", "10:30", "12:00", "13:30", "15:00", "17:00", "18:10", "19:30", "21:00"]
+        }
+      },
+      "sesi": {
+        nome: "Sesi",
+        diasUteis: {
+          terminalUrbano: ["06:00", "06:30", "07:00", "07:30", "08:00", "08:30", "09:00", "09:30", "10:10", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "16:00", "17:00", "17:30", "18:00", "18:30", "19:00", "20:00", "21:10", "22:20", "23:45"],
+          bairro: ["05:35", "06:00", "06:30", "07:00", "07:00", "07:30", "08:00", "08:30", "09:00", "09:45", "10:35", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "15:35", "16:30", "17:00", "17:30", "17:30", "18:00", "18:30", "19:30", "20:40", "21:50", "23:15"]
+        },
+        sabados: {
+          terminalUrbano: ["06:00", "06:30", "07:00", "07:30", "08:00", "08:30", "09:00", "09:30", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "18:00", "19:30", "21:05", "22:00"],
+          bairro: ["05:35", "06:00", "06:30", "07:00", "07:30", "08:00", "08:30", "09:00", "10:30", "11:30", "12:30", "13:30", "14:30", "15:30", "17:30", "19:00", "20:35", "21:30"]
+        },
+        domingosEFeriados: {
+          terminalUrbano: ["07:35", "08:50", "10:30", "12:00", "13:30", "15:00", "16:30", "18:30", "19:35", "21:00"],
+          bairro: ["07:10", "08:20", "10:00", "11:30", "13:00", "14:30", "16:00", "18:00", "19:05", "20:30"]
+        }
+      }
+    };
+
+    // 2. LÓGICA DE RENDERING E INTERATIVIDADE
+    document.addEventListener('DOMContentLoaded', () => {
+      // Controlos do Menu Mobile
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      const closeSidebarBtn = document.getElementById('close-sidebar-btn');
+      const sidebar = document.getElementById('sidebar');
+      const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+      if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', () => {
+        sidebar.classList.remove('-translate-x-full');
+        sidebarOverlay.classList.remove('hidden');
+      });
+      
+      const closeMenu = () => {
+        sidebar.classList.add('-translate-x-full');
+        sidebarOverlay.classList.add('hidden');
+      };
+
+      if (closeSidebarBtn) closeSidebarBtn.addEventListener('click', closeMenu);
+      if (sidebarOverlay) sidebarOverlay.addEventListener('click', closeMenu);
+
+      // Elementos de Rotas
+      const select = document.getElementById('linhaSelect');
+      const container = document.getElementById('horariosContainer');
+
+      // Limpar opções
+      select.innerHTML = '';
+
+      // Preencher o select dinamicamente
+      for (const [key, rota] of Object.entries(HORARIOS_BUSWORK)) {
+        const option = document.createElement('option');
+        option.value = key;
+        option.textContent = rota.nome;
+        select.appendChild(option);
+      }
+
+      // Função de construção dos blocos de horário
+      function renderHorarios(chaveLinha) {
+        const rota = HORARIOS_BUSWORK[chaveLinha];
+        container.innerHTML = ''; 
+
+        const periodos = [
+          { id: 'diasUteis', titulo: 'Dias Úteis', icone: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z' },
+          { id: 'sabados', titulo: 'Sábados', icone: 'M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z' },
+          { id: 'domingosEFeriados', titulo: 'Domingos e Feriados', icone: 'M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z' }
+        ];
+
+        periodos.forEach(periodo => {
+          const dados = rota[periodo.id];
+          if (!dados) return;
+
+          const terminal = dados.terminalUrbano || [];
+          const bairro = dados.bairro || [];
+
+          let htmlTerminal = terminal.length > 0 
+            ? terminal.map(h => `<span class="bg-gray-800 border border-gray-700 px-3 py-1.5 rounded-lg text-sm font-medium text-center shadow-sm">${h}</span>`).join('')
+            : `<span class="text-gray-500 text-sm italic">Sem operação</span>`;
+
+          let htmlBairro = bairro.length > 0 
+            ? bairro.map(h => `<span class="bg-gray-800 border border-gray-700 px-3 py-1.5 rounded-lg text-sm font-medium text-center shadow-sm">${h}</span>`).join('')
+            : `<span class="text-gray-500 text-sm italic">Sem operação</span>`;
+
+          const bloco = `
+            <div class="bg-[#0D1117] border border-gray-800 rounded-2xl overflow-hidden shadow-xl">
+              <div class="bg-gray-900 px-5 py-3 border-b border-gray-800 flex items-center space-x-2">
+                <svg class="w-5 h-5 text-[#FFD600]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="${periodo.icone}"></path></svg>
+                <h3 class="font-bold text-lg text-white">${periodo.titulo}</h3>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-gray-800">
+                <div class="bg-[#0D1117] p-5">
+                  <div class="flex items-center space-x-2 mb-4">
+                    <span class="w-2 h-2 rounded-full bg-[#FFD600]"></span>
+                    <h4 class="font-semibold text-gray-300 uppercase tracking-wider text-xs">Saída: Terminal Urbano</h4>
+                  </div>
+                  <div class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-2">
+                    ${htmlTerminal}
+                  </div>
+                </div>
+                <div class="bg-[#0D1117] p-5">
+                  <div class="flex items-center space-x-2 mb-4">
+                    <span class="w-2 h-2 rounded-full bg-blue-500"></span>
+                    <h4 class="font-semibold text-gray-300 uppercase tracking-wider text-xs">Saída: Bairro</h4>
+                  </div>
+                  <div class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-2">
+                    ${htmlBairro}
+                  </div>
+                </div>
+              </div>
+            </div>
+          `;
+          container.insertAdjacentHTML('beforeend', bloco);
+        });
+      }
+
+      // Renderização inicial
+      if (select.options.length > 0) {
+        renderHorarios(select.value);
+      }
+
+      // Evento ao alterar a seleção
+      select.addEventListener('change', (e) => {
+        renderHorarios(e.target.value);
+      });
+    });
+  </script>
+</body>
+</html>

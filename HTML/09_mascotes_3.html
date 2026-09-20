@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BUS WORK - Escolher Mascote</title>
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Estilo apontando para a pasta CSS -->
+  <link rel="stylesheet" href="../CSS/09_mascotes.css">
+</head>
+<body>
+
+  <div class="app-viewport">
+    
+    <!-- CABEÇALHO FLUIDO -->
+    <header class="header-banner">
+      <button id="btnVoltar" class="btn-back" aria-label="Voltar">
+        <i data-lucide="arrow-left"></i>
+      </button>
+      <div class="header-title">
+        <h1>Meu bichinho</h1>
+        <p>Escolha o seu companheiro de viagem no mapa</p>
+      </div>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL COM GRELHA FLUIDA -->
+    <main class="content-area">
+      <div id="mascotsGrid" class="mascots-grid">
+        <!-- Gerado dinamicamente via JS -->
+      </div>
+    </main>
+
+    <!-- RODAPÉ FIXO COM BOTÃO -->
+    <footer class="footer-bar">
+      <button id="btnConfirmar" class="btn-confirm" disabled>
+        Confirmar Escolha
+      </button>
+    </footer>
+
+  </div>
+
+  <!-- Script apontando para a pasta JS -->
+  <script src="../JS/09_mascotes.js"></script>
+</body>
+</html>

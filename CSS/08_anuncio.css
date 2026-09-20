@@ -1,0 +1,225 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+}
+
+body {
+    background-color: #0f0f11;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* Container do App (Layout limpo, flexível para telas mobile) */
+.app-container {
+    width: 100%;
+    max-width: 480px;
+    background-color: #141416;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding-bottom: 24px;
+}
+
+/* Header */
+.page-header {
+    background-color: #FFD700;
+    color: #000000;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.back-btn {
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    color: #000000;
+    cursor: pointer;
+}
+
+.page-title {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/* Filtros por Abas */
+.tab-filters {
+    display: flex;
+    gap: 8px;
+    padding: 16px 20px;
+    background-color: #18181b;
+    overflow-x: auto;
+}
+
+.tab-btn {
+    background: #27272a;
+    border: 1px solid #3f3f46;
+    color: #a1a1aa;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.tab-btn.active {
+    background: #FFD700;
+    color: #000000;
+    border-color: #FFD700;
+}
+
+/* Lista de Cards */
+.feed-container {
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Estilo Base dos Cards */
+.ad-card {
+    background: #1d1d21;
+    border-radius: 16px;
+    padding: 18px;
+    border: 1px solid #2e2e35;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-badge {
+    align-self: flex-start;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.card-location {
+    font-size: 11px;
+    color: #a1a1aa;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.card-subtitle {
+    font-size: 13px;
+    color: #d4d4d8;
+    margin-top: 4px;
+    line-height: 1.4;
+}
+
+.card-highlight {
+    font-size: 14px;
+    font-weight: 700;
+    display: block;
+    margin-top: 2px;
+}
+
+.card-date-box, .card-info-group {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 10px 12px;
+    border-radius: 8px;
+    margin-top: 8px;
+    font-size: 12px;
+    color: #f4f4f5;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.card-date-box {
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+}
+
+.card-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 6px;
+}
+
+.btn-primary, .btn-secondary {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn-secondary {
+    background: #27272a;
+    color: #ffffff;
+    border: 1px solid #3f3f46;
+}
+
+/* Temas Visuais Baseados nos Cartazes Reais */
+
+/* 1. Empreende Week (Tech / Futurista) */
+.theme-tech {
+    border-left: 4px solid #00d2ff;
+    background: linear-gradient(145deg, #161e2e, #131722);
+}
+.tech-badge { background: #00d2ff; color: #000; }
+.tech-btn { background: #00d2ff; color: #000; }
+
+/* 2. Festival de Música (Roxo / Vibrante) */
+.theme-music {
+    border-left: 4px solid #a855f7;
+    background: linear-gradient(145deg, #241432, #181124);
+}
+.music-badge { background: #a855f7; color: #fff; }
+.music-btn { background: #a855f7; color: #fff; }
+
+/* 3. Desfile Cívico (Verde / Amarelo) */
+.theme-civic {
+    border-left: 4px solid #10b981;
+    background: linear-gradient(145deg, #0f291e, #111e17);
+}
+.civic-badge { background: #10b981; color: #fff; }
+.theme-civic .card-highlight { color: #FFD700; }
+.civic-btn { background: #10b981; color: #fff; }
+
+/* 4. Recital Folclore (Tom Nordeste / Marrom Quente) */
+.theme-folk {
+    border-left: 4px solid #f59e0b;
+    background: linear-gradient(145deg, #2a2015, #1c1712);
+}
+.folk-badge { background: #f59e0b; color: #000; }
+.secult-tag { font-size: 10px; color: #f59e0b; font-weight: 700; }
+.theme-folk .card-highlight { color: #f59e0b; }
+.folk-btn { background: #f59e0b; color: #000; }
+
+/* 5. Formatura / Dança (Elegante Escuro) */
+.theme-dance {
+    border-left: 4px solid #e11d48;
+    background: linear-gradient(145deg, #221518, #181113);
+}
+.dance-badge { background: #e11d48; color: #fff; }
+.dance-btn { background: #e11d48; color: #fff; }

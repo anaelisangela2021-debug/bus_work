@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BUS WORK - Menu</title>
+  
+  <!-- Ícones Lucide -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Estilo apontando para a pasta CSS -->
+  <link rel="stylesheet" href="../CSS/07_hamburguer.css">
+</head>
+<body>
+
+  <div class="menu-container">
+    
+    <!-- CABEÇALHO DO PERFIL NO MENU -->
+    <div class="menu-header">
+      <button id="btnCloseMenu" class="btn-close" aria-label="Fechar menu">
+        <i data-lucide="x"></i>
+      </button>
+      
+      <div class="user-info-section">
+        <div id="fotoPerfilMenu" class="user-avatar">
+          <i data-lucide="user"></i>
+        </div>
+        <div class="user-details">
+          <h2 id="nomeUsuarioMenu">Utilizador BUS WORK</h2>
+          <span class="user-status">Passageiro Nível 1</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- LISTA DE NAVEGAÇÃO -->
+    <nav class="menu-nav">
+      <ul>
+        <li class="menu-item" id="btnEditarPerfil">
+          <div class="menu-icon"><i data-lucide="user-cog"></i></div>
+          <span>Editar Perfil</span>
+          <i data-lucide="chevron-right" class="arrow-icon"></i>
+        </li>
+
+        <!-- NOVO: Botão do Bichinho -->
+        <li class="menu-item highlight-item" id="btnMeuBichinho">
+          <div class="menu-icon"><i data-lucide="smile"></i></div>
+          <span>Meu bichinho</span>
+          <i data-lucide="chevron-right" class="arrow-icon"></i>
+        </li>
+
+        <li class="menu-item" id="btnMinhaCarteira">
+          <div class="menu-icon"><i data-lucide="wallet"></i></div>
+          <span>Minha Carteira</span>
+          <i data-lucide="chevron-right" class="arrow-icon"></i>
+        </li>
+
+        <li class="menu-item" id="btnMeusPontos">
+          <div class="menu-icon"><i data-lucide="award"></i></div>
+          <span>Meus Pontos & Recompensas</span>
+          <i data-lucide="chevron-right" class="arrow-icon"></i>
+        </li>
+
+        <li class="menu-item" id="btnHistorico">
+          <div class="menu-icon"><i data-lucide="history"></i></div>
+          <span>Histórico de Viagens</span>
+          <i data-lucide="chevron-right" class="arrow-icon"></i>
+        </li>
+
+        <li class="menu-item" id="btnConfiguracoes">
+          <div class="menu-icon"><i data-lucide="settings"></i></div>
+          <span>Configurações</span>
+          <i data-lucide="chevron-right" class="arrow-icon"></i>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- RODAPÉ DO MENU -->
+    <div class="menu-footer">
+      <button id="btnSair" class="btn-logout">
+        <i data-lucide="log-out"></i>
+        <span>Sair da Conta</span>
+      </button>
+    </div>
+
+  </div>
+
+  <!-- Script apontando para a pasta JS -->
+  <script src="../JS/07_hamburguer.js"></script>
+</body>
+</html>

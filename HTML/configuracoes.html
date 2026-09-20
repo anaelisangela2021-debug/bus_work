@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BUS WORK - Configurações</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen flex flex-col bg-[#090C10] text-white relative">
+
+  <!-- OVERLAY MOBILE -->
+  <div id="sidebarOverlay" class="fixed inset-0 bg-black/70 z-40 hidden lg:hidden transition-opacity"></div>
+
+  <!-- CABEÇALHO SUPERIOR -->
+  <header class="bg-[#FFD600] text-black px-4 lg:px-6 py-2.5 flex items-center justify-between sticky top-0 z-30 shadow-md">
+    <div class="flex items-center space-x-3 lg:space-x-6">
+      <a href="06_tela_inicial_2.html" class="flex items-center focus:outline-none">
+        <svg class="h-10 w-auto" viewBox="0 0 310 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g id="bus-icon">
+            <rect x="2" y="36" width="7" height="18" rx="3" fill="#121212"/>
+            <rect x="83" y="36" width="7" height="18" rx="3" fill="#121212"/>
+            <rect x="8" y="10" width="76" height="76" rx="16" fill="#121212"/>
+            <rect x="18" y="84" width="14" height="7" rx="3" fill="#121212"/>
+            <rect x="60" y="84" width="14" height="7" rx="3" fill="#121212"/>
+            <rect x="32" y="18" width="28" height="5" rx="2" fill="#FFD600"/>
+            <path d="M 18 30 H 74 V 48 C 74 53 70 56 64 56 H 28 C 22 56 18 53 18 48 Z" fill="#FFD600"/>
+            <circle cx="26" cy="68" r="6" fill="#FFD600"/>
+            <circle cx="66" cy="68" r="6" fill="#FFD600"/>
+            <rect x="38" y="67" width="16" height="3.5" rx="1.5" fill="#FFD600"/>
+          </g>
+          <g id="bus-text" fill="#121212">
+            <text x="100" y="44" font-family="'Arial Black', 'Impact', sans-serif" font-weight="900" font-size="42" letter-spacing="-1">BUS</text>
+            <text x="100" y="84" font-family="'Arial Black', 'Impact', sans-serif" font-weight="900" font-size="42" letter-spacing="-1">WORK</text>
+            <path d="M 112 80 L 122 61 L 129 63 L 118 82 Z" fill="#FFD600"/>
+          </g>
+        </svg>
+      </a>
+      <div class="flex items-center space-x-3 border-l border-black/20 pl-4">
+        <div>
+          <h2 class="font-bold text-sm leading-tight">Configurações</h2>
+        </div>
+      </div>
+    </div>
+    <div class="flex items-center space-x-3 sm:space-x-4">
+      <button id="mobile-menu-btn" class="lg:hidden p-2 hover:bg-black/10 rounded-lg focus:outline-none">
+        <svg class="w-7 h-7 text-black" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="flex-1 flex overflow-hidden relative">
+    
+    <!-- MENU LATERAL -->
+    <aside id="sidebar" class="fixed lg:static inset-y-0 left-0 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out z-50 w-64 bg-[#090C10] border-r border-gray-800 flex flex-col justify-between p-4 overflow-y-auto">
+      <div class="space-y-4">
+        <div class="flex items-center justify-between lg:hidden pb-2 border-b border-gray-800">
+          <span class="font-bold text-[#FFD600] text-sm">Menu Navegação</span>
+          <button id="close-sidebar-btn" class="p-1.5 rounded-lg text-gray-400 hover:text-white hover:bg-gray-800">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+        <nav class="space-y-1">
+          <a href="06_tela_inicial_2.html" class="flex items-center space-x-3 text-gray-400 hover:text-white hover:bg-gray-800/50 px-4 py-2.5 rounded-xl transition">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span>Início</span>
+          </a>
+          <a href="rotas_final.html" class="flex items-center space-x-3 text-gray-400 hover:text-white hover:bg-gray-800/50 px-4 py-2.5 rounded-xl transition">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+            <span>Rotas</span>
+          </a>
+          <a href="meus_pontos.html" class="flex items-center space-x-3 text-gray-400 hover:text-white hover:bg-gray-800/50 px-4 py-2.5 rounded-xl transition">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <span>Pontos</span>
+          </a>
+          <a href="minha_carteira.html" class="flex items-center space-x-3 text-gray-400 hover:text-white hover:bg-gray-800/50 px-4 py-2.5 rounded-xl transition">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+            <span>Carteira</span>
+          </a>
+          <a href="historico.html" class="flex items-center space-x-3 text-gray-400 hover:text-white hover:bg-gray-800/50 px-4 py-2.5 rounded-xl transition">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>Histórico</span>
+          </a>
+          <a href="configuracoes.html" class="flex items-center space-x-3 bg-[#FFD600] text-black font-bold px-4 py-3 rounded-xl transition">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            <span>Configurações</span>
+          </a>
+        </nav>
+      </div>
+    </aside>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="flex-1 overflow-y-auto p-4 lg:p-6 pb-24 lg:pb-6">
+      <div class="max-w-3xl mx-auto space-y-6">
+        
+        <!-- PERFIL DO USUÁRIO -->
+        <div class="bg-[#0F172A] border border-gray-800 p-6 rounded-2xl shadow-xl flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div class="flex items-center space-x-4">
+            <div class="relative">
+              <div class="w-16 h-16 rounded-full bg-[#FFD600] text-black font-extrabold text-xl flex items-center justify-center border-2 border-[#FFD600]">
+                JS
+              </div>
+              <button class="absolute bottom-0 right-0 bg-gray-800 text-gray-200 p-1 rounded-full border border-gray-600 hover:text-[#FFD600]">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3"/></svg>
+              </button>
+            </div>
+            <div>
+              <h2 class="font-bold text-lg text-white">João Silva</h2>
+              <p class="text-xs text-gray-400">joao.silva@email.com</p>
+              <span class="inline-block mt-1 bg-[#FFD600]/10 text-[#FFD600] text-[10px] font-bold px-2 py-0.5 rounded-md border border-[#FFD600]/20">Nível Explorador</span>
+            </div>
+          </div>
+          <button class="bg-[#1E293B] hover:bg-gray-800 text-xs text-gray-200 font-semibold px-4 py-2 rounded-xl border border-gray-700 transition">
+            Editar Perfil
+          </button>
+        </div>
+
+        <!-- SEÇÃO: NOTIFICAÇÕES -->
+        <div class="bg-[#0F172A] border border-gray-800 rounded-2xl overflow-hidden shadow-xl">
+          <div class="px-5 py-4 bg-gray-900/60 border-b border-gray-800 flex items-center space-x-2">
+            <svg class="w-5 h-5 text-[#FFD600]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+            <h3 class="font-bold text-sm text-white">Preferências de Notificação</h3>
+          </div>
+
+          <div class="p-5 space-y-4 divide-y divide-gray-800/60">
+            <div class="flex items-center justify-between pt-2">
+              <div>
+                <p class="text-sm font-semibold text-white">Alertas de Chegada de Ônibus</p>
+                <p class="text-xs text-gray-400">Avisar quando a linha selecionada estiver próxima do ponto</p>
+              </div>
+              <label class="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" checked class="sr-only peer">
+                <div class="w-11 h-6 bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#FFD600]"></div>
+              </label>
+            </div>
+
+            <div class="flex items-center justify-between pt-4">
+              <div>
+                <p class="text-sm font-semibold text-white">Novos Eventos & Prêmios</p>
+                <p class="text-xs text-gray-400">Notificar sobre novos eventos parceiros para ganhar pontos</p>
+              </div>
+              <label class="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" checked class="sr-only peer">
+                <div class="w-11 h-6 bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#FFD600]"></div>
+              </label>
+            </div>
+
+            <div class="flex items-center justify-between pt-4">
+              <div>
+                <p class="text-sm font-semibold text-white">Resumo de Atividade por Email</p>
+                <p class="text-xs text-gray-400">Receber relatório semanal de pontos acumulados</p>
+              </div>
+              <label class="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" class="sr-only peer">
+                <div class="w-11 h-6 bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#FFD600]"></div>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- SEÇÃO: SEGURANÇA E PRIVACIDADE -->
+        <div class="bg-[#0F172A] border border-gray-800 rounded-2xl overflow-hidden shadow-xl">
+          <div class="px-5 py-4 bg-gray-900/60 border-b border-gray-800 flex items-center space-x-2">
+            <svg class="w-5 h-5 text-[#FFD600]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+            <h3 class="font-bold text-sm text-white">Segurança & Localização</h3>
+          </div>
+
+          <div class="p-5 space-y-4 divide-y divide-gray-800/60">
+            <div class="flex items-center justify-between pt-2">
+              <div>
+                <p class="text-sm font-semibold text-white">Permissão de Localização</p>
+                <p class="text-xs text-gray-400">Permitir uso do GPS para calcular rotas e verificar presença em eventos</p>
+              </div>
+              <label class="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" checked class="sr-only peer">
+                <div class="w-11 h-6 bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#FFD600]"></div>
+              </label>
+            </div>
+
+            <div class="flex items-center justify-between pt-4">
+              <div>
+                <p class="text-sm font-semibold text-white">Alterar Senha</p>
+                <p class="text-xs text-gray-400">Atualize sua senha de acesso periodicamente</p>
+              </div>
+              <button class="text-xs text-[#FFD600] font-bold hover:underline">
+                Alterar
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- AÇÕES DA CONTA -->
+        <div class="flex flex-col sm:flex-row gap-3 pt-2">
+          <button class="flex-1 bg-gray-800 hover:bg-gray-700 text-gray-300 font-semibold py-3 px-4 rounded-xl text-xs transition border border-gray-700">
+            Termos de Uso & Política de Privacidade
+          </button>
+          <button class="bg-red-500/10 hover:bg-red-500/20 text-red-400 border border-red-500/30 font-semibold py-3 px-6 rounded-xl text-xs transition">
+            Sair da Conta
+          </button>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- BARRA INFERIOR MOBILE -->
+  <nav class="lg:hidden fixed bottom-0 left-0 right-0 bg-[#090C10] border-t border-gray-800 px-3 py-2 flex items-center justify-around z-30">
+    <a href="06_tela_inicial_2.html" class="flex flex-col items-center text-gray-400 hover:text-white transition">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <span class="text-[10px] mt-1">Início</span>
+    </a>
+    <a href="rotas_final.html" class="flex flex-col items-center text-gray-400 hover:text-white transition">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+      <span class="text-[10px] mt-1">Rotas</span>
+    </a>
+    <a href="meus_pontos.html" class="flex flex-col items-center text-gray-400 hover:text-white transition">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <span class="text-[10px] mt-1">Pontos</span>
+    </a>
+    <a href="minha_carteira.html" class="flex flex-col items-center text-gray-400 hover:text-white transition">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+      <span class="text-[10px] mt-1">Carteira</span>
+    </a>
+  </nav>
+
+  <!-- JAVASCRIPT INTEGRADO -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Menu Mobile
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      const closeSidebarBtn = document.getElementById('close-sidebar-btn');
+      const sidebar = document.getElementById('sidebar');
+      const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+      if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', () => {
+        sidebar.classList.remove('-translate-x-full');
+        sidebarOverlay.classList.remove('hidden');
+      });
+      
+      const closeMenu = () => {
+        sidebar.classList.add('-translate-x-full');
+        sidebarOverlay.classList.add('hidden');
+      };
+
+      if (closeSidebarBtn) closeSidebarBtn.addEventListener('click', closeMenu);
+      if (sidebarOverlay) sidebarOverlay.addEventListener('click', closeMenu);
+    });
+  </script>
+</body>
+</html>

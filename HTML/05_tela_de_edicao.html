@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Perfil - BUS WORK</title>
+    <link rel="stylesheet" href="../CSS/05_tela_de_edicao.css">
+</head>
+<body>
+    <div class="edit-container">
+        <div class="edit-box">
+            
+            <!-- Foto de Perfil -->
+            <div class="profile-pic-container">
+                <div class="profile-circle" id="profileCircleClick">
+                    <img id="previewImg" src="https://via.placeholder.com/150" alt="Foto de Perfil">
+                </div>
+            </div>
+
+            <h2>Completar Dados</h2>
+            <p>Atualize as suas informações ou pule por enquanto.</p>
+
+            <form id="editForm" class="edit-form">
+                
+                <!-- Input de foto oculto -->
+                <div class="input-group" style="display: none;">
+                    <label for="fotoPerfil">Foto de Perfil</label>
+                    <input type="file" id="fotoPerfil" name="fotoPerfil" accept="image/*">
+                </div>
+
+                <!-- Nome Completo (Bloqueia automaticamente se já estiver preenchido) -->
+                <div class="input-group">
+                    <label for="nome">Nome Completo</label>
+                    <input type="text" id="nome" name="nome" placeholder="Digite o seu nome completo">
+                </div>
+
+                <!-- Apelido (Sempre Editável) -->
+                <div class="input-group">
+                    <label for="apelido">Apelido</label>
+                    <input type="text" id="apelido" name="apelido" placeholder="Como deseja ser chamado">
+                </div>
+
+                <!-- CPF (Livre na 1ª vez, Bloqueia após preenchido) -->
+                <div class="input-group">
+                    <label for="cpf">CPF</label>
+                    <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" maxlength="14">
+                </div>
+
+                <!-- CEP (Sempre Editável) -->
+                <div class="input-group">
+                    <label for="cep">CEP</label>
+                    <input type="text" id="cep" name="cep" placeholder="00000-000" maxlength="9">
+                </div>
+
+                <button type="submit" class="btn-primary">Salvar Alterações</button>
+                <button type="button" id="btnPular" class="btn-secondary">Pular por enquanto</button>
+            </form>
+
+        </div>
+    </div>
+
+    <script src="../JS/05_tela_de_edicao.js"></script>
+</body>
+</html>

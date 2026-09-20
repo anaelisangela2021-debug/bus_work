@@ -1,0 +1,52 @@
+{
+  "usuarios": [
+    {
+      "nome": "Ana Carolina",
+      "email": "ana@gmail.com",
+      "senha": "123",
+      "id": "1789830598015"
+    },
+    {
+      "nome": "ana",
+      "email": "ana@gmail.com",
+      "senha": "",
+      "id": "1789831664146"
+    },
+    {
+      "nome": "oi",
+      "email": "oi@gmail.com",
+      "senha": "123",
+      "id": "1789831854844"
+    },
+    {
+      "nome": "Carol Santos",
+      "email": "carol@gmail.com",
+      "senha": "123",
+      "id": "1789837644199"
+    },
+    {
+      "nome": "Carol Santos",
+      "email": "oie@gmail.com",
+      "senha": "123",
+      "id": "1789837894938"
+    },
+    {
+      "nome": "Maria Santos",
+      "email": "maria@gmail.com",
+      "senha": "123",
+      "id": "1789838248914"
+    },
+    {
+      "nome": "Joao santos",
+      "email": "joao@gmail.com",
+      "senha": "123",
+      "id": "1789838910626"
+    },
+    {
+      "nome": "nn",
+      "email": "nn@gmail.com",
+      "senha": "123",
+      "id": "1789839827343"
+    }
+  ]
+}

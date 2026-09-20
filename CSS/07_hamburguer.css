@@ -1,0 +1,200 @@
+:root {
+  --yellow-main: #FFD600;
+  --yellow-light: #FFF9D6;
+  --bg-app: #FAFAFC;
+  --card-bg: #FFFFFF;
+  --text-dark: #1A1D20;
+  --text-muted: #717680;
+  --red-logout: #E74C3C;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background-color: var(--bg-app);
+  color: var(--text-dark);
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.menu-container {
+  width: 100%;
+  max-width: 600px;
+  background-color: #FFFFFF;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.05);
+}
+
+/* Cabeçalho do Menu */
+.menu-header {
+  background-color: var(--yellow-main);
+  padding: 32px 24px 28px 24px;
+  border-bottom-left-radius: 28px;
+  border-bottom-right-radius: 28px;
+  position: relative;
+}
+
+.btn-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.08);
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #1A1D20;
+  transition: background 0.2s;
+}
+
+.btn-close:hover {
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.user-info-section {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.user-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+}
+
+.user-avatar svg {
+  width: 100%;
+  height: 100%;
+}
+
+.user-details h2 {
+  font-size: 18px;
+  font-weight: 800;
+  color: #1A1D20;
+  line-height: 1.2;
+}
+
+.user-status {
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(26, 29, 32, 0.7);
+  background: rgba(255, 255, 255, 0.5);
+  padding: 3px 10px;
+  border-radius: 12px;
+  display: inline-block;
+  margin-top: 4px;
+}
+
+/* Navegação */
+.menu-nav {
+  flex: 1;
+  padding: 24px 20px;
+}
+
+.menu-nav ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 16px 18px;
+  background-color: #F8F8FC;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.menu-item:hover {
+  background-color: #EFEFF6;
+  transform: translateX(4px);
+}
+
+/* Destaque para a opção do Bichinho */
+.menu-item.highlight-item {
+  background-color: var(--yellow-light);
+}
+
+.menu-item.highlight-item:hover {
+  background-color: #FFE680;
+}
+
+.menu-icon {
+  width: 38px;
+  height: 38px;
+  background: #FFFFFF;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1A1D20;
+  margin-right: 14px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.menu-item span {
+  flex: 1;
+  font-size: 15px;
+  font-weight: 700;
+  color: #1A1D20;
+}
+
+.arrow-icon {
+  color: #A0A4A8;
+  width: 18px;
+  height: 18px;
+}
+
+/* Rodapé */
+.menu-footer {
+  padding: 20px;
+  border-top: 1px solid #F0F0F5;
+}
+
+.btn-logout {
+  width: 100%;
+  padding: 14px;
+  background: transparent;
+  border: 2px solid #F0F0F5;
+  border-radius: 16px;
+  color: var(--red-logout);
+  font-size: 15px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.btn-logout:hover {
+  background-color: #FFF0F0;
+  border-color: #FFC0C0;
+}

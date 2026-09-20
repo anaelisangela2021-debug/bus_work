@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BUS WORK - Painel</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Estilos CSS do Painel -->
+  <link rel="stylesheet" href="06_tela_inicial_2.css">
+</head>
+<body class="min-h-screen flex flex-col bg-[#090C10] text-white relative">
+
+  <!-- OVERLAY (Fundo escuro em ecrãs menores) -->
+  <div id="sidebarOverlay" class="fixed inset-0 bg-black/70 z-40 hidden lg:hidden transition-opacity"></div>
+
+  <!-- CABEÇALHO SUPERIOR -->
+  <header class="bg-[#FFD600] text-black px-4 lg:px-6 py-2.5 flex items-center justify-between sticky top-0 z-30 shadow-md">
+    <div class="flex items-center space-x-3 lg:space-x-6">
+      
+      <!-- LOGO OFICIAL BUS WORK -->
+      <a href="#" class="flex items-center focus:outline-none" aria-label="BUS WORK Home">
+        <svg class="h-10 w-auto" viewBox="0 0 310 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g id="bus-icon">
+            <rect x="2" y="36" width="7" height="18" rx="3" fill="#121212"/>
+            <rect x="83" y="36" width="7" height="18" rx="3" fill="#121212"/>
+            <rect x="8" y="10" width="76" height="76" rx="16" fill="#121212"/>
+            <rect x="18" y="84" width="14" height="7" rx="3" fill="#121212"/>
+            <rect x="60" y="84" width="14" height="7" rx="3" fill="#121212"/>
+            <rect x="32" y="18" width="28" height="5" rx="2" fill="#FFD600"/>
+            <path d="M 18 30 H 74 V 48 C 74 53 70 56 64 56 H 28 C 22 56 18 53 18 48 Z" fill="#FFD600"/>
+            <circle cx="26" cy="68" r="6" fill="#FFD600"/>
+            <circle cx="66" cy="68" r="6" fill="#FFD600"/>
+            <rect x="38" y="67" width="16" height="3.5" rx="1.5" fill="#FFD600"/>
+          </g>
+          <g id="bus-text" fill="#121212">
+            <text x="100" y="44" font-family="'Arial Black', 'Impact', sans-serif" font-weight="900" font-size="42" letter-spacing="-1">BUS</text>
+            <text x="100" y="84" font-family="'Arial Black', 'Impact', sans-serif" font-weight="900" font-size="42" letter-spacing="-1">WORK</text>
+            <path d="M 112 80 L 122 61 L 129 63 L 118 82 Z" fill="#FFD600"/>
+          </g>
+        </svg>
+      </a>
+
+      <!-- Perfil do Utilizador no Cabeçalho -->
+      <div class="flex items-center space-x-3 border-l border-black/20 pl-4">
+        <div id="userAvatarContainer" class="w-10 h-10 rounded-full border-2 border-black bg-white flex items-center justify-center overflow-hidden shrink-0 shadow-sm p-0.5">
+          <!-- O SVG do Mascote será inserido aqui pelo JS -->
+        </div>
+        <div>
+          <h2 id="userNameDisplay" class="font-bold text-sm leading-tight">Olá!</h2>
+          <p class="text-xs font-medium text-black/80 hidden sm:flex items-center">Bora seguir hoje? 🚌</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex items-center space-x-3 sm:space-x-4">
+      <div class="flex items-center bg-black/10 px-3 py-1.5 rounded-full text-xs font-semibold">
+        <svg class="w-4 h-4 mr-1 text-black" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span id="userCityDisplay">Campo Mourão - PR</span>
+      </div>
+      
+      <button class="relative p-2 hover:bg-black/10 rounded-full transition" aria-label="Notificações">
+        <svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        <span class="absolute top-1 right-1 w-2.5 h-2.5 bg-red-600 rounded-full"></span>
+      </button>
+      
+      <!-- BOTÃO HAMBÚRGUER MOBILE -->
+      <button id="mobile-menu-btn" class="lg:hidden p-2 hover:bg-black/10 rounded-lg focus:outline-none" aria-label="Abrir Menu">
+        <svg class="w-7 h-7 text-black" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+          <line x1="4" y1="6" x2="20" y2="6"/>
+          <line x1="4" y1="12" x2="20" y2="12"/>
+          <line x1="4" y1="18" x2="20" y2="18"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- ESTRUTURA PRINCIPAL -->
+  <div class="flex-1 flex overflow-hidden relative">
+
+    <!-- MENU LATERAL RESPONSIVO -->
+    <aside id="sidebar" class="fixed lg:static inset-y-0 left-0 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out z-50 w-64 bg-[#090C10] border-r border-gray-800 flex flex-col justify-between p-4 overflow-y-auto">
+      
+      <div class="space-y-4">
+        <!-- BOTÃO FECHAR MENU (Visível apenas em Mobile) -->
+        <div class="flex items-center justify-between lg:hidden pb-2 border-b border-gray-800">
+          <span class="font-bold text-[#FFD600] text-sm">Menu Navegação</span>
+          <button id="close-sidebar-btn" class="p-1.5 rounded-lg text-gray-400 hover:text-white hover:bg-gray-800">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+
+        <nav class="space-y-1">
+          <!-- Início -->
+          <a href="#" class="flex items-center space-x-3 bg-[#FFD600] text-black font-bold px-4 py-3 rounded-xl">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span>Início</span>
+          </a>
+
+          <!-- Meu Bichinho -->
+          <a href="09_mascotes_3.html" class="flex items-center space-x-3 text-gray-400 hover:text-white hover:bg-gray-800/50 px-4 py-2.5 rounded-xl transition">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+            <span>Meu Bichinho</span>
+          </a>
+
+          <!-- Histórico -->
+          <a href="historico.html" class="flex items-center space-x-3 text-gray-400 hover:text-white hover:bg-gray-800/50 px-4 py-2.5 rounded-xl transition">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>Histórico</span>
+          </a>
+
+          <!-- Rotas -->
+          <a href="rotas_final.html" class="flex items-center space-x-3 text-gray-400 hover:text-white hover:bg-gray-800/50 px-4 py-2.5 rounded-xl transition">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+            <span>Rotas</span>
+          </a>
+
+          
+          <!-- Carteira -->
+          <a href="minha_carteira.html" class="flex items-center space-x-3 text-gray-400 hover:text-white hover:bg-gray-800/50 px-4 py-2.5 rounded-xl transition">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4"/><path d="M4 6v12a2 2 0 0 0 2 2h14v-4"/><path d="M18 12a2 2 0 0 0-2 2c0 1.1.9 2 2 2h4v-4h-4z"/></svg>
+            <span>Carteira</span>
+          </a>
+
+          <!-- Meus Pontos -->
+          <a href="meus_pontos.html" class="flex items-center space-x-3 text-gray-400 hover:text-white hover:bg-gray-800/50 px-4 py-2.5 rounded-xl transition">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <span>Meus Pontos</span>
+          </a>
+
+          <!-- Eventos Culturais -->
+          <a href="#eventos-section" class="flex items-center space-x-3 text-gray-400 hover:text-white hover:bg-gray-800/50 px-4 py-2.5 rounded-xl transition">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <span>Eventos Culturais</span>
+          </a>
+          
+          <div class="pt-4 border-t border-gray-800 space-y-1">
+            <!-- Editar Perfil -->
+            <a href="05_tela_de_edicao.html" class="flex items-center space-x-3 text-gray-400 hover:text-white hover:bg-gray-800/50 px-4 py-2.5 rounded-xl transition">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              <span>Editar Perfil</span>
+            </a>
+
+            <!-- Configurações -->
+            <a href="configuracoes.html" class="flex items-center space-x-3 text-gray-400 hover:text-white hover:bg-gray-800/50 px-4 py-2.5 rounded-xl transition">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+              <span>Configurações</span>
+            </a>
+          </div>
+        </nav>
+      </div>
+
+      <div class="mt-6 pt-4 border-t border-gray-800 text-center">
+        <div class="bg-[#FFD600]/10 p-3 rounded-xl border border-[#FFD600]/30 text-left">
+          <svg class="w-8 h-8 text-[#FFD600] mb-2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="13" rx="2"/><path d="M4 11h16"/><path d="M7 19v2"/><path d="M17 19v2"/><circle cx="7.5" cy="15.5" r="1.5"/><circle cx="16.5" cy="15.5" r="1.5"/></svg>
+          <p class="text-xs font-bold text-[#FFD600]">Mais mobilidade para uma cidade melhor.</p>
+        </div>
+      </div>
+    </aside>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="flex-1 overflow-y-auto p-4 lg:p-6 pb-24 lg:pb-6 grid grid-cols-1 xl:grid-cols-12 gap-6">
+
+      <!-- COLUNA PRINCIPAL / ESQUERDA -->
+      <div class="xl:col-span-8 space-y-6">
+
+        <!-- MAPA DE LOCALIZAÇÃO -->
+        <div class="relative rounded-2xl overflow-hidden border border-gray-800 bg-[#0F172A] h-[340px] sm:h-[380px] flex flex-col justify-between p-4 shadow-xl">
+          <div class="absolute inset-0 opacity-40 bg-[radial-gradient(#334155_1px,transparent_1px)] [background-size:16px_16px]"></div>
+          
+          <div class="absolute inset-0 pointer-events-none">
+            <svg class="w-full h-full stroke-yellow-500/30 stroke-2 fill-none">
+              <path d="M 50,200 L 200,80 L 400,180 L 600,60" />
+              <path d="M 100,320 L 300,150 L 550,280" />
+            </svg>
+            <span class="absolute bottom-16 left-1/2 -translate-x-1/2 text-gray-400 text-xs font-semibold tracking-wider uppercase bg-black/60 px-3 py-1 rounded-full border border-gray-700">Campo Mourão - PR</span>
+            
+            <!-- MARCADOR DE LOCALIZAÇÃO DO MASCOTE -->
+            <div id="mapMascotMarker" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#FFD600] border-2 border-black rounded-full shadow-2xl w-12 h-12 flex items-center justify-center z-20 overflow-hidden p-0.5">
+              <!-- O SVG do Mascote será inserido aqui pelo JS -->
+            </div>
+
+            <div class="absolute top-24 left-1/3 bg-[#FFD600] text-black p-1.5 rounded-full shadow-lg border-2 border-black">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="13" rx="2"/><path d="M4 11h16"/><path d="M7 19v2"/><path d="M17 19v2"/><circle cx="7.5" cy="15.5" r="1.5"/><circle cx="16.5" cy="15.5" r="1.5"/></svg>
+            </div>
+            <div class="absolute bottom-28 right-1/4 bg-[#FFD600] text-black p-1.5 rounded-full shadow-lg border-2 border-black">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="13" rx="2"/><path d="M4 11h16"/><path d="M7 19v2"/><path d="M17 19v2"/><circle cx="7.5" cy="15.5" r="1.5"/><circle cx="16.5" cy="15.5" r="1.5"/></svg>
+            </div>
+          </div>
+
+          <div class="relative z-10 flex justify-between items-start">
+            <div class="bg-black/80 backdrop-blur-md px-3 py-1.5 rounded-xl border border-gray-700 flex items-center space-x-2 text-xs font-bold">
+              <svg class="w-4 h-4 text-[#FFD600]" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="13" rx="2"/><path d="M4 11h16"/><path d="M7 19v2"/><path d="M17 19v2"/><circle cx="7.5" cy="15.5" r="1.5"/><circle cx="16.5" cy="15.5" r="1.5"/></svg>
+              <span>Autocarros próximos</span>
+              <span class="bg-[#FFD600] text-black px-1.5 py-0.5 rounded-md text-xs font-black">3</span>
+            </div>
+            <button class="bg-black/80 p-2 rounded-xl border border-gray-700 text-gray-300 hover:text-white" aria-label="Localização">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><circle cx="12" cy="12" r="7"/></svg>
+            </button>
+          </div>
+
+          <div class="relative z-10 bg-[#FFD600] p-2 sm:p-3 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-2 shadow-2xl">
+            <div class="flex items-center space-x-3 w-full sm:w-auto flex-1 px-2">
+              <svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <input type="text" placeholder="Para onde vamos?" class="bg-transparent text-black font-bold placeholder-black/70 focus:outline-none w-full text-base">
+            </div>
+            <div class="flex items-center space-x-2 w-full sm:w-auto justify-end">
+              <button class="bg-black/10 hover:bg-black/20 text-black font-bold px-3 py-1.5 rounded-xl text-xs flex items-center space-x-1">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                <span>Casa</span>
+              </button>
+              <button class="bg-black/10 hover:bg-black/20 text-black font-bold px-3 py-1.5 rounded-xl text-xs flex items-center space-x-1">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                <span>Trabalho</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- MURAL DE EVENTOS DA CIDADE -->
+        <div id="eventos-section" class="space-y-4">
+          <div class="flex items-center justify-between">
+            <h3 class="font-black text-lg text-[#FFD600] flex items-center">
+              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 12A10 10 0 0 0 12 2v10z"/><path d="M12 12V2a10 10 0 0 0-10 10h10z"/><path d="M12 12H2a10 10 0 0 0 10 10V12z"/><path d="M12 12v10a10 10 0 0 0 10-10H12z"/></svg> Mural de Anúncios & Eventos
+            </h3>
+            <span class="text-xs text-gray-400">Campo Mourão</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            
+            <!-- EVENTO 1 -->
+            <div class="bg-[#0D1117] border border-gray-800 rounded-2xl overflow-hidden hover:border-[#FFD600] transition group flex flex-col">
+              <div class="relative overflow-hidden bg-gray-900">
+                <img src="evento1.jpeg" alt="Empreende Week Summit 2026" class="w-full h-44 object-cover group-hover:scale-105 transition duration-300">
+                <span class="absolute top-2 left-2 bg-[#FFD600] text-black text-[10px] font-black px-2 py-0.5 rounded-md uppercase">Inovação</span>
+              </div>
+              <div class="p-3.5 flex flex-col flex-1 justify-between space-y-2">
+                <div>
+                  <h4 class="font-bold text-sm text-white leading-tight">Empreende Week Summit 2026</h4>
+                  <p class="text-xs text-[#FFD600] mt-1 flex items-center font-semibold">
+                    <svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> 05, 06 e 07 de Outubro
+                  </p>
+                  <p class="text-[11px] text-gray-400 mt-1">Ciência, tecnologia, inovação e negócios.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- EVENTO 2 -->
+            <div class="bg-[#0D1117] border border-gray-800 rounded-2xl overflow-hidden hover:border-[#FFD600] transition group flex flex-col">
+              <div class="relative overflow-hidden bg-gray-900">
+                <img src="evento2.jpeg" alt="Recital de Inverno" class="w-full h-44 object-cover group-hover:scale-105 transition duration-300">
+                <span class="absolute top-2 left-2 bg-[#FFD600] text-black text-[10px] font-black px-2 py-0.5 rounded-md uppercase">Cultura</span>
+              </div>
+              <div class="p-3.5 flex flex-col flex-1 justify-between space-y-2">
+                <div>
+                  <h4 class="font-bold text-sm text-white leading-tight">Recital de Inverno - Folclore Nordestino</h4>
+                  <p class="text-xs text-[#FFD600] mt-1 flex items-center font-semibold">
+                    <svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> 03 e 04 de Julho • 20h00
+                  </p>
+                  <p class="text-[11px] text-gray-400 mt-1">Teatro Municipal de Campo Mourão.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- EVENTO 3 -->
+            <div class="bg-[#0D1117] border border-gray-800 rounded-2xl overflow-hidden hover:border-[#FFD600] transition group flex flex-col">
+              <div class="relative overflow-hidden bg-gray-900">
+                <img src="evento3.jpeg" alt="Formatura 2026" class="w-full h-44 object-cover group-hover:scale-105 transition duration-300">
+                <span class="absolute top-2 left-2 bg-[#FFD600] text-black text-[10px] font-black px-2 py-0.5 rounded-md uppercase">Dança</span>
+              </div>
+              <div class="p-3.5 flex flex-col flex-1 justify-between space-y-2">
+                <div>
+                  <h4 class="font-bold text-sm text-white leading-tight">Convite Formatura 2026</h4>
+                  <p class="text-xs text-[#FFD600] mt-1 flex items-center font-semibold">
+                    <svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> 15 de Julho • 20h00
+                  </p>
+                  <p class="text-[11px] text-gray-400 mt-1">Apresentação de Dança no Teatro Municipal.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- EVENTO 4 -->
+            <div class="bg-[#0D1117] border border-gray-800 rounded-2xl overflow-hidden hover:border-[#FFD600] transition group flex flex-col">
+              <div class="relative overflow-hidden bg-gray-900">
+                <img src="evento4.jpeg" alt="Desfile Cívico" class="w-full h-44 object-cover group-hover:scale-105 transition duration-300">
+                <span class="absolute top-2 left-2 bg-[#FFD600] text-black text-[10px] font-black px-2 py-0.5 rounded-md uppercase">Civismo</span>
+              </div>
+              <div class="p-3.5 flex flex-col flex-1 justify-between space-y-2">
+                <div>
+                  <h4 class="font-bold text-sm text-white leading-tight">Desfile Cívico - Independência</h4>
+                  <p class="text-xs text-[#FFD600] mt-1 flex items-center font-semibold">
+                    <svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> 07 de Setembro • 08h00
+                  </p>
+                  <p class="text-[11px] text-gray-400 mt-1">Avenida Irmãos Pereira.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- EVENTO 5 -->
+            <div class="bg-[#0D1117] border border-gray-800 rounded-2xl overflow-hidden hover:border-[#FFD600] transition group flex flex-col">
+              <div class="relative overflow-hidden bg-gray-900">
+                <img src="evento5.jpeg" alt="10º Festival de Música" class="w-full h-44 object-cover group-hover:scale-105 transition duration-300">
+                <span class="absolute top-2 left-2 bg-[#FFD600] text-black text-[10px] font-black px-2 py-0.5 rounded-md uppercase">Música</span>
+              </div>
+              <div class="p-3.5 flex flex-col flex-1 justify-between space-y-2">
+                <div>
+                  <h4 class="font-bold text-sm text-white leading-tight">10º Festival de Música</h4>
+                  <p class="text-xs text-[#FFD600] mt-1 flex items-center font-semibold">
+                    <svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> 14 a 19 de Setembro
+                  </p>
+                  <p class="text-[11px] text-gray-400 mt-1">SECULT - Campo Mourão.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- COLUNA DIREITA -->
+      <div class="xl:col-span-4 space-y-6">
+
+        <!-- BLOCO DE ANÚNCIO COM CARTAZ OFICIAL DE ESPORTES -->
+        <div class="bg-[#0D1117] border border-gray-800 rounded-2xl overflow-hidden shadow-xl relative group hover:border-[#FFD600] transition">
+          <div class="relative">
+            <img src="corrida.jpeg" alt="Circuito de Corridas - Etapa Integrado" class="w-full h-56 object-cover object-top group-hover:scale-105 transition duration-300">
+            <span class="absolute top-3 left-3 bg-[#FFD600] text-black text-[10px] font-black px-2 py-0.5 rounded-md uppercase tracking-wider">Anúncio de Esportes</span>
+          </div>
+          <div class="p-4 space-y-2">
+            <h4 class="font-bold text-white text-base group-hover:text-[#FFD600] transition">Circuito de Corridas - 4.ª Etapa</h4>
+            <p class="text-xs text-gray-400 leading-relaxed">Secretaria de Esportes & Etapa Integrado. Confira os horários para a retirada dos numerais no Colégio Integrado!</p>
+          </div>
+        </div>
+
+        <!-- BLOCO DE PROMOÇÃO PATROCINADA -->
+        <div class="bg-gradient-to-br from-[#161B22] to-[#0D1117] border border-gray-800 rounded-2xl p-5 shadow-xl relative overflow-hidden group hover:border-[#FFD600] transition">
+          <div class="flex items-center justify-between mb-3">
+            <span class="bg-[#FFD600] text-black text-[10px] font-black px-2 py-0.5 rounded-md uppercase tracking-wider">Promoção Especial</span>
+            <span class="text-[10px] text-gray-500 font-semibold">Parceiro BUS WORK</span>
+          </div>
+          <div class="space-y-2">
+            <h4 class="font-bold text-white text-base group-hover:text-[#FFD600] transition">Recarregue pelo App e Ganhe Bônus</h4>
+            <p class="text-xs text-gray-400 leading-relaxed">Faça recargas acima de R$ 30,00 no seu cartão de transporte e acumule pontos em dobro no seu bichinho mascote!</p>
+          </div>
+          <a href="minha_carteira.html" class="mt-4 inline-flex items-center justify-center w-full bg-[#FFD600] text-black font-bold text-xs py-2.5 rounded-xl hover:bg-yellow-400 transition shadow-md">
+            Aproveitar Promoção
+          </a>
+        </div>
+
+        <!-- APOIO OFICIAL -->
+        <div class="bg-[#0D1117] border border-[#FFD600]/40 text-white p-5 rounded-2xl relative overflow-hidden shadow-xl flex items-center justify-between gap-4">
+          <div class="space-y-2 z-10 relative flex-1">
+            <span class="bg-[#FFD600] text-black text-[10px] font-black px-2 py-0.5 rounded-md uppercase tracking-wider">Apoio Oficial</span>
+            <h3 class="text-lg font-black leading-tight text-white">Município de Campo Mourão</h3>
+            <p class="text-xs text-gray-400 leading-relaxed">Incentivando a mobilidade urbana, o esporte e a cultura em nossa cidade.</p>
+          </div>
+          <div class="bg-white p-2 rounded-xl shadow-md border border-gray-200 shrink-0 w-20 h-20 flex items-center justify-center">
+            <img src="municipio.webp" alt="Município de Campo Mourão" class="max-h-full max-w-full object-contain">
+          </div>
+        </div>
+
+      </div>
+
+    </main>
+  </div>
+
+  <!-- BARRA INFERIOR MOBILE -->
+  <nav class="lg:hidden fixed bottom-0 left-0 right-0 bg-[#090C10] border-t border-gray-800 px-3 py-2 flex items-center justify-around z-30">
+    <a href="#" class="flex flex-col items-center text-[#FFD600]">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <span class="text-[10px] mt-1 font-bold">Início</span>
+    </a>
+    <a href="09_mascotes_3.html" class="flex flex-col items-center text-gray-400 hover:text-white transition">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+      <span class="text-[10px] mt-1">Meu Bichinho</span>
+    </a>
+    <a href="rotas_final.html" class="flex flex-col items-center text-gray-400 hover:text-white transition">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+      <span class="text-[10px] mt-1">Rotas</span>
+    </a>
+    <a href="minha_carteira.html" class="flex flex-col items-center text-gray-400 hover:text-white transition">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4"/><path d="M4 6v12a2 2 0 0 0 2 2h14v-4"/><path d="M18 12a2 2 0 0 0-2 2c0 1.1.9 2 2 2h4v-4h-4z"/></svg>
+      <span class="text-[10px] mt-1">Carteira</span>
+    </a>
+    <a href="#eventos-section" class="flex flex-col items-center text-gray-400 hover:text-white transition">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      <span class="text-[10px] mt-1">Eventos</span>
+    </a>
+  </nav>
+
+  <!-- FICHEIRO JAVASCRIPT INTEGRADO -->
+  <script src="06_tela_inicial_2.js"></script>
+  <!-- BASE DE DADOS DE HORÁRIOS -->
+  <script src="horarios_linhas.js"></script>
+  <!-- SCRIPT PRINCIPAL -->
+  <script src="06_tela_inicial_2.js"></script>
+
+</body>
+</html>

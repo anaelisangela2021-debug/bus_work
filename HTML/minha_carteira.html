@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BUS WORK - Minha Carteira</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen flex flex-col bg-[#090C10] text-white relative">
+
+  <!-- OVERLAY MOBILE -->
+  <div id="sidebarOverlay" class="fixed inset-0 bg-black/70 z-40 hidden lg:hidden transition-opacity"></div>
+
+  <!-- CABEÇALHO SUPERIOR -->
+  <header class="bg-[#FFD600] text-black px-4 lg:px-6 py-2.5 flex items-center justify-between sticky top-0 z-30 shadow-md">
+    <div class="flex items-center space-x-3 lg:space-x-6">
+      <a href="06_tela_inicial_2.html" class="flex items-center focus:outline-none">
+        <svg class="h-10 w-auto" viewBox="0 0 310 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g id="bus-icon">
+            <rect x="2" y="36" width="7" height="18" rx="3" fill="#121212"/>
+            <rect x="83" y="36" width="7" height="18" rx="3" fill="#121212"/>
+            <rect x="8" y="10" width="76" height="76" rx="16" fill="#121212"/>
+            <rect x="18" y="84" width="14" height="7" rx="3" fill="#121212"/>
+            <rect x="60" y="84" width="14" height="7" rx="3" fill="#121212"/>
+            <rect x="32" y="18" width="28" height="5" rx="2" fill="#FFD600"/>
+            <path d="M 18 30 H 74 V 48 C 74 53 70 56 64 56 H 28 C 22 56 18 53 18 48 Z" fill="#FFD600"/>
+            <circle cx="26" cy="68" r="6" fill="#FFD600"/>
+            <circle cx="66" cy="68" r="6" fill="#FFD600"/>
+            <rect x="38" y="67" width="16" height="3.5" rx="1.5" fill="#FFD600"/>
+          </g>
+          <g id="bus-text" fill="#121212">
+            <text x="100" y="44" font-family="'Arial Black', 'Impact', sans-serif" font-weight="900" font-size="42" letter-spacing="-1">BUS</text>
+            <text x="100" y="84" font-family="'Arial Black', 'Impact', sans-serif" font-weight="900" font-size="42" letter-spacing="-1">WORK</text>
+            <path d="M 112 80 L 122 61 L 129 63 L 118 82 Z" fill="#FFD600"/>
+          </g>
+        </svg>
+      </a>
+      <div class="flex items-center space-x-3 border-l border-black/20 pl-4">
+        <div>
+          <h2 class="font-bold text-sm leading-tight">Minha Carteira</h2>
+        </div>
+      </div>
+    </div>
+    <div class="flex items-center space-x-3 sm:space-x-4">
+      <button id="mobile-menu-btn" class="lg:hidden p-2 hover:bg-black/10 rounded-lg focus:outline-none">
+        <svg class="w-7 h-7 text-black" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="flex-1 flex overflow-hidden relative">
+    
+    <!-- MENU LATERAL -->
+    <aside id="sidebar" class="fixed lg:static inset-y-0 left-0 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out z-50 w-64 bg-[#090C10] border-r border-gray-800 flex flex-col justify-between p-4 overflow-y-auto">
+      <div class="space-y-4">
+        <div class="flex items-center justify-between lg:hidden pb-2 border-b border-gray-800">
+          <span class="font-bold text-[#FFD600] text-sm">Menu Navegação</span>
+          <button id="close-sidebar-btn" class="p-1.5 rounded-lg text-gray-400 hover:text-white hover:bg-gray-800">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+        <nav class="space-y-1">
+          <a href="06_tela_inicial_2.html" class="flex items-center space-x-3 text-gray-400 hover:text-white hover:bg-gray-800/50 px-4 py-2.5 rounded-xl transition">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span>Início</span>
+          </a>
+          <a href="rotas_final.html" class="flex items-center space-x-3 text-gray-400 hover:text-white hover:bg-gray-800/50 px-4 py-2.5 rounded-xl transition">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+            <span>Rotas</span>
+          </a>
+          <a href="minha_carteira.html" class="flex items-center space-x-3 bg-[#FFD600] text-black font-bold px-4 py-3 rounded-xl transition">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+            <span>Carteira</span>
+          </a>
+        </nav>
+      </div>
+    </aside>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="flex-1 overflow-y-auto p-4 lg:p-6 pb-24 lg:pb-6">
+      <div class="max-w-4xl mx-auto space-y-6">
+        
+        <!-- CARTÃO VIRTUAL E SALDO -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          
+          <!-- CARTÃO PASSE DIGITAL -->
+          <div class="bg-gradient-to-br from-[#1E293B] to-[#0F172A] border border-gray-700 p-6 rounded-2xl shadow-xl flex flex-col justify-between h-56 relative overflow-hidden">
+            <div class="absolute -right-6 -bottom-6 w-32 h-32 bg-[#FFD600]/10 rounded-full blur-2xl"></div>
+            <div class="flex justify-between items-start">
+              <div>
+                <span class="text-xs uppercase font-bold text-[#FFD600] tracking-wider">Cartão Passe Digital</span>
+                <h3 class="text-lg font-bold text-white mt-0.5">Estudante / Comum</h3>
+              </div>
+              <svg class="w-8 h-8 text-[#FFD600]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+            </div>
+            
+            <div class="space-y-1">
+              <span class="text-xs text-gray-400">Saldo Disponível</span>
+              <div class="text-3xl font-extrabold text-white">R$ 48,20</div>
+            </div>
+
+            <div class="flex justify-between items-center text-xs text-gray-400 border-t border-gray-700/60 pt-3">
+              <span>Nº **** **** 4821</span>
+              <span class="text-green-400 font-semibold">• Ativo</span>
+            </div>
+          </div>
+
+          <!-- TARIFAS VIGENTES -->
+          <div class="bg-[#0F172A] border border-gray-800 p-6 rounded-2xl shadow-xl flex flex-col justify-between space-y-4">
+            <div>
+              <h3 class="text-base font-bold text-white mb-1 flex items-center gap-2">
+                <svg class="w-5 h-5 text-[#FFD600]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                Tarifas Vigentes
+              </h3>
+              <p class="text-xs text-gray-400">Valores atualizados do transporte público municipal.</p>
+            </div>
+
+            <div class="space-y-3">
+              <!-- Tarifa Normal -->
+              <div class="bg-[#1E293B] border border-gray-700/60 p-3.5 rounded-xl flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                  <div class="w-2.5 h-2.5 rounded-full bg-[#FFD600]"></div>
+                  <span class="text-sm font-semibold text-gray-200">Tarifa Normal</span>
+                </div>
+                <span class="text-lg font-bold text-white">R$ 4,81</span>
+              </div>
+
+              <!-- Tarifa Estudante -->
+              <div class="bg-[#1E293B] border border-gray-700/60 p-3.5 rounded-xl flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                  <div class="w-2.5 h-2.5 rounded-full bg-blue-500"></div>
+                  <span class="text-sm font-semibold text-gray-200">Estudantes</span>
+                </div>
+                <span class="text-lg font-bold text-[#FFD600]">R$ 2,40</span>
+              </div>
+            </div>
+
+            <button class="w-full bg-[#FFD600] hover:bg-[#e6c200] text-black font-bold py-3 rounded-xl transition shadow-lg text-sm">
+              Recarregar Saldo
+            </button>
+          </div>
+
+        </div>
+
+        <!-- HISTÓRICO RECENTE DE USO -->
+        <div class="bg-[#0D1117] border border-gray-800 rounded-2xl overflow-hidden shadow-xl">
+          <div class="bg-gray-900 px-5 py-4 border-b border-gray-800 flex justify-between items-center">
+            <h3 class="font-bold text-base text-white">Últimas Atividades</h3>
+            <span class="text-xs text-[#FFD600] font-medium cursor-pointer hover:underline">Ver tudo</span>
+          </div>
+
+          <div class="divide-y divide-gray-800/60">
+            
+            <!-- Item 1 -->
+            <div class="p-4 flex items-center justify-between hover:bg-gray-800/30 transition">
+              <div class="flex items-center space-x-3">
+                <div class="bg-red-500/10 p-2.5 rounded-xl border border-red-500/20 text-red-400">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg>
+                </div>
+                <div>
+                  <p class="text-sm font-semibold text-white">Uso da Tarifa (Estudante)</p>
+                  <p class="text-xs text-gray-400">Linha Parque Verde • Hoje, 07:12</p>
+                </div>
+              </div>
+              <span class="text-sm font-bold text-red-400">- R$ 2,40</span>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="p-4 flex items-center justify-between hover:bg-gray-800/30 transition">
+              <div class="flex items-center space-x-3">
+                <div class="bg-green-500/10 p-2.5 rounded-xl border border-green-500/20 text-green-400">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path></svg>
+                </div>
+                <div>
+                  <p class="text-sm font-semibold text-white">Recarga Pix</p>
+                  <p class="text-xs text-gray-400">Aprovado • Ontem, 18:40</p>
+                </div>
+              </div>
+              <span class="text-sm font-bold text-green-400">+ R$ 50,00</span>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="p-4 flex items-center justify-between hover:bg-gray-800/30 transition">
+              <div class="flex items-center space-x-3">
+                <div class="bg-red-500/10 p-2.5 rounded-xl border border-red-500/20 text-red-400">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg>
+                </div>
+                <div>
+                  <p class="text-sm font-semibold text-white">Uso da Tarifa (Normal)</p>
+                  <p class="text-xs text-gray-400">Linha Campus Integrado • 18/09/2026</p>
+                </div>
+              </div>
+              <span class="text-sm font-bold text-red-400">- R$ 4,81</span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- BARRA INFERIOR MOBILE -->
+  <nav class="lg:hidden fixed bottom-0 left-0 right-0 bg-[#090C10] border-t border-gray-800 px-3 py-2 flex items-center justify-around z-30">
+    <a href="06_tela_inicial_2.html" class="flex flex-col items-center text-gray-400 hover:text-white transition">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <span class="text-[10px] mt-1">Início</span>
+    </a>
+    <a href="rotas_final.html" class="flex flex-col items-center text-gray-400 hover:text-white transition">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+      <span class="text-[10px] mt-1">Rotas</span>
+    </a>
+    <a href="minha_carteira.html" class="flex flex-col items-center text-[#FFD600]">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+      <span class="text-[10px] mt-1 font-bold">Carteira</span>
+    </a>
+  </nav>
+
+  <!-- JAVASCRIPT INTEGRADO -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Menu Mobile
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      const closeSidebarBtn = document.getElementById('close-sidebar-btn');
+      const sidebar = document.getElementById('sidebar');
+      const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+      if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', () => {
+        sidebar.classList.remove('-translate-x-full');
+        sidebarOverlay.classList.remove('hidden');
+      });
+      
+      const closeMenu = () => {
+        sidebar.classList.add('-translate-x-full');
+        sidebarOverlay.classList.add('hidden');
+      };
+
+      if (closeSidebarBtn) closeSidebarBtn.addEventListener('click', closeMenu);
+      if (sidebarOverlay) sidebarOverlay.addEventListener('click', closeMenu);
+    });
+  </script>
+</body>
+</html>
